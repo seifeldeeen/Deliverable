@@ -64,7 +64,46 @@ class DeliveryTruck : IDeliverable
     }
 
 }
+class RefrigeratedTruck: DeliveryTruck
+{
 
+public RefrigeratedTruck(string name, int max) : base(name, max)
+{
+
+}
+
+
+    public override void StartEngine()
+    {
+        Console.WriteLine("Cooling systems initialized. Welcome Back Sir.");
+    }
+}
+class LuxuryCourierVan : DeliveryTruck 
+{
+    private readonly bool hasPremiumInterior;
+
+    public LuxuryCourierVan(string name, int max, bool IsPremium) : base(name, max)
+{
+    hasPremiumInterior = IsPremium;
+}
+    public void ActivateClimateControl()
+    {
+        if (hasPremiumInterior)
+        {
+            Console.WriteLine("Premium Interior is installed");
+        }
+        else
+        {
+            Console.WriteLine("Premium Interior is not installed");
+        }
+    }
+    public override void StartEngine()
+    {
+        Console.WriteLine("Luxury Van's engine started quietly.");
+    }
+    public override bool RequiresSpecialDocking => true;
+
+}
 
 class Program
 {
